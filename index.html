@@ -19,26 +19,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 /* Stat cards */
 .stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px}
 @media(max-width:900px){.stat-grid{grid-template-columns:1fr 1fr}}
-.scard{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.scard h4{font-size:.74em;font-weight:700;color:var(--sub);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.scard h4 .sic{font-size:.9em;cursor:pointer}
-.circle-wrap{display:flex;flex-direction:column;align-items:center}
-.circle{width:72px;height:72px;border-radius:50%;border:4px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.4em;font-weight:800;margin-bottom:8px;color:var(--accent)}
-.circle-sub{font-size:.68em;color:var(--sub)}
-.scard .sm{font-size:.68em;color:var(--sub);margin-top:4px}
-.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:.76em}
-.prog-bar{height:6px;background:var(--border);border-radius:3px;margin-bottom:10px}
-.prog-bar .fill{height:6px;background:var(--accent);border-radius:3px;width:0%}
-.sbtn{display:block;width:100%;padding:10px;border-radius:12px;font-size:.76em;font-weight:700;cursor:pointer;border:0;text-align:center;margin-top:8px;transition:.15s}
-.sbtn.green{background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff}
-.sbtn.green:hover{opacity:.9}
-.sbtn.yellow{background:#fef3c7;color:#b45309}
-.sbtn.yellow:hover{background:#fde68a}
-.scard .val{font-size:1.3em;font-weight:800;margin-bottom:4px}
+.scard{background:var(--card);border-radius:18px;border:1px solid var(--border);padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:.2s;position:relative;overflow:hidden}
+.scard:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.scard h4{font-size:.72em;font-weight:700;color:var(--sub);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;text-transform:uppercase;letter-spacing:.5px}
+.scard h4 .sic{font-size:1em;cursor:pointer;transition:.15s}
+.scard h4 .sic:hover{transform:rotate(90deg)}
+.circle-wrap{display:flex;flex-direction:column;align-items:center;margin:4px 0 2px}
+.circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6em;font-weight:800;position:relative;background:conic-gradient(var(--accent) 0%,#e0e7ff 0%);margin-bottom:10px}
+.circle::before{content:'';position:absolute;inset:6px;background:#fff;border-radius:50%}
+.circle span{position:relative;z-index:1;color:var(--accent)}
+.circle-sub{font-size:.68em;color:var(--sub);font-weight:500}
+.scard .sm{font-size:.66em;color:var(--sub);margin-top:6px;text-align:center}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:.8em;font-weight:600}
+.prog-row span:first-child{color:var(--sub)}
+.prog-bar{height:8px;background:#f0f0f3;border-radius:5px;margin-bottom:18px;overflow:hidden}
+.prog-bar .fill{height:100%;border-radius:4px;transition:width .4s ease}
+.prog-bar .fill.nfill{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.prog-bar .fill.rfill{background:linear-gradient(90deg,#16a34a,#22c55e)}
+.sbtn{display:block;width:100%;padding:11px;border-radius:12px;font-size:.76em;font-weight:700;cursor:pointer;border:0;text-align:center;margin-top:10px;transition:.15s;letter-spacing:.2px}
+.sbtn.green{background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;box-shadow:0 2px 8px rgba(22,163,74,.2)}
+.sbtn.green:hover{box-shadow:0 4px 14px rgba(22,163,74,.3);transform:translateY(-1px)}
+.sbtn.yellow{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;box-shadow:0 2px 8px rgba(245,158,11,.15)}
+.sbtn.yellow:hover{box-shadow:0 4px 14px rgba(245,158,11,.25);transform:translateY(-1px)}
+.scard .val{font-size:2em;font-weight:800;margin-bottom:2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.scard .vlabel{font-size:.72em;color:var(--sub);font-weight:500}
 /* Detail card */
-.detail-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:28px 32px;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:20px;position:relative}
+.detail-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:28px 32px;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:20px;position:relative;overflow-y:auto;-ms-overflow-style:none;scrollbar-width:none}.detail-card::-webkit-scrollbar{display:none}
 .dhead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
 .dhead h2{font-size:2em;font-weight:800;letter-spacing:-1px}
+.dhead .fstar{font-size:1.3em;cursor:pointer;transition:.15s;flex-shrink:0;margin-top:6px}
+.dhead .fstar:hover{transform:scale(1.2)}
 .dtags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .dtag{padding:4px 12px;border-radius:8px;font-size:.72em;background:#f3f4f6;color:var(--sub);font-weight:500}
 .dsec{margin-bottom:18px}
@@ -84,10 +94,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 
   <!-- Stat Cards -->
   <div class="stat-grid">
-    <div class="scard"><h4>学习进度</h4><div class="circle-wrap"><div class="circle" id="progressCircle">0%</div><div class="circle-sub">已掌握</div></div><div class="sm" style="text-align:center;margin-top:6px">共 <span id="totalCount">0</span> 个</div></div>
-    <div class="scard"><h4>今日任务</h4><div class="prog-row"><span>新学</span><span id="newCount">0 / 10</span></div><div class="prog-bar"><div class="fill" id="newFill" style="width:0%"></div></div><div class="prog-row"><span>复习</span><span id="revCount">0 / 0</span></div><div class="prog-bar"><div class="fill" id="revFill" style="width:0%"></div></div></div>
-    <div class="scard"><h4>复习旧卡<span class="sic" onclick="resetReview()" style="color:var(--green);cursor:pointer">🔄</span></h4><div class="val" id="toReview">0</div><div style="font-size:.76em;color:var(--sub)">待复习</div><div class="sm">巩固记忆，强化掌握</div><button class="sbtn green" onclick="startReview()">开始复习</button></div>
-    <div class="scard"><h4>收藏夹</h4><div class="val" id="favCount">0</div><div style="font-size:.76em;color:var(--sub)">已收藏</div><div class="sm">重要成语，随时查看</div><button class="sbtn yellow" onclick="showFavorites()">查看收藏</button></div>
+    <div class="scard"><h4>学习进度</h4><div class="circle-wrap"><div class="circle" id="progCircle"><span id="progPct">0%</span></div><div class="circle-sub">已掌握</div></div></div>
+    <div class="scard"><h4>今日任务<span class="sic" onclick="resetToday()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></span></h4><div class="prog-row"><span>新学</span><span id="newCount">0 / 10</span></div><div class="prog-bar"><div class="fill nfill" id="newFill" style="width:0%"></div></div><div class="prog-row"><span>复习</span><span id="revCount">0 / 0</span></div><div class="prog-bar"><div class="fill rfill" id="revFill" style="width:0%"></div></div></div>
+    <div class="scard"><h4>复习旧卡<span class="sic" onclick="resetReview()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></span></h4><div class="val" id="toReview">0</div><div class="vlabel">待复习</div><button class="sbtn green" onclick="startReview()">开始复习</button></div>
+    <div class="scard"><h4>收藏夹</h4><div class="val" id="favCount">0</div><div class="vlabel">已收藏</div><button class="sbtn yellow" onclick="showFavorites()">查看收藏</button></div>
   </div>
 
   <!-- Detail Card -->
@@ -175,8 +185,8 @@ function updateStats(){
   var pool=curType==='idiom'?idioms:words;
   var mastered=data.mastered.filter(function(x){return pool.some(function(y){return y.w===x})});
   var pct=pool.length>0?Math.round(mastered.length/pool.length*100):0;
-  document.getElementById('progressCircle').textContent=pct+'%';
-  document.getElementById('totalCount').textContent=pool.length;
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progCircle').style.background='conic-gradient(var(--accent) '+pct*3.6+'deg,#e0e7ff 0deg)';
   document.getElementById('newCount').textContent=data.todayNew+' / 10';
   document.getElementById('newFill').style.width=Math.min(data.todayNew/10*100,100)+'%';
   var nr=data.needReview.filter(function(x){return pool.some(function(y){return y.w===x})});
@@ -189,8 +199,8 @@ function updateStats(){
 // ====== DETAIL ======
 function renderDetail(){
   var item=curPool[curIdx];if(!item){document.getElementById('detailCard').innerHTML='<div style="text-align:center;padding:60px;color:var(--sub)">无匹配结果</div>';return}
-  var mastered=isMastered(item.w),fav=isFav(item.w);
-  var html='<div class="dhead"><h2>'+item.w+'</h2></div>';
+  var mastered=isMastered(item.w);
+  var fav=isFav(item.w);var html='<div class="dhead"><h2>'+item.w+'</h2><span class="fstar" onclick="toggleFav(\''+item.w+'\')" title="收藏">'+(fav?'⭐':'☆')+'</span></div>';
   html+='<div class="dtags"><span class="dtag">'+item.p+'</span><span class="dtag">'+item.f+'次</span></div>';
   html+='<div class="dsec"><h3>释义</h3><p>'+item.d+'</p></div>';
   html+='<div class="dsec"><h3>常考用法</h3><p>'+item.u+'</p></div>';
@@ -224,6 +234,7 @@ function startReview(){
   curIdx=0;viewMode='review';renderDetail();
 }
 function resetReview(){data.needReview=[];data.todayRev=0;saveData();renderDetail()}
+function resetToday(){data.todayNew=0;data.todayRev=0;saveData();renderDetail()}
 function showFavorites(){
   var favs=data.favorites.filter(function(x){return curPool.some(function(y){return y.w===x})});
   if(!favs.length){alert('暂无收藏');return}
